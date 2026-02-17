@@ -1,0 +1,158 @@
+.workshop-booking {
+  margin: 2rem 0 2.2rem;
+}
+
+.workshop-pdp .workshop-booking {
+  padding: 1.6rem;
+  border-radius: 1.8rem;
+  background: rgba(var(--color-foreground), 0.02);
+  border: 0.1rem solid rgba(var(--color-foreground), 0.10);
+}
+
+.workshop-booking__header {
+  margin-bottom: 1.4rem;
+}
+
+.workshop-booking__eyebrow {
+  margin: 0;
+  font-size: 1.2rem;
+  letter-spacing: 0.12rem;
+  text-transform: uppercase;
+  color: rgba(var(--color-foreground), 0.66);
+}
+
+.workshop-booking__intro {
+  margin: 0.6rem 0 0;
+  font-size: 1.4rem;
+  color: rgba(var(--color-foreground), 0.76);
+}
+
+.workshop-booking__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.4rem;
+}
+
+@media screen and (min-width: 750px) {
+  .workshop-booking__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.workshop-booking__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.workshop-booking__field--full {
+  grid-column: 1 / -1;
+}
+
+.workshop-booking__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.3rem;
+  color: rgba(var(--color-foreground), 0.86);
+}
+
+.workshop-booking__icon {
+  display: inline-flex;
+  width: 2.2rem;
+  height: 2.2rem;
+  align-items: center;
+  justify-content: center;
+  color: rgba(var(--color-foreground), 0.8);
+}
+
+.workshop-booking__input,
+.workshop-booking__textarea {
+  width: 100%;
+  min-height: 5.4rem;
+  border-radius: 1.6rem;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.14);
+  background: rgba(var(--color-background), 0.98);
+  color: rgb(var(--color-foreground));
+  padding: 1.2rem 1.4rem;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.workshop-booking__textarea {
+  min-height: 8.4rem;
+  resize: vertical;
+}
+
+.workshop-booking__input:focus-visible,
+.workshop-booking__textarea:focus-visible {
+  outline: 0.2rem solid rgba(var(--color-foreground), 0.4);
+  outline-offset: 0.2rem;
+}
+
+.workshop-booking__input:hover,
+.workshop-booking__textarea:hover {
+  border-color: rgba(var(--color-foreground), 0.2);
+}
+
+.workshop-booking__input[aria-invalid='true'],
+.workshop-booking__textarea[aria-invalid='true'] {
+  border-color: rgba(220, 53, 69, 0.7);
+}
+
+.workshop-booking__input--center {
+  text-align: center;
+}
+
+.workshop-booking__stepper {
+  display: grid;
+  grid-template-columns: 5.6rem 1fr 5.6rem;
+  align-items: stretch;
+  gap: 0.8rem;
+}
+
+.workshop-booking__stepper-btn {
+  min-height: 5.4rem;
+  border-radius: 1.6rem;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.14);
+  background: rgba(var(--color-foreground), 0.02);
+  color: rgb(var(--color-foreground));
+  font-size: 2rem;
+  line-height: 1;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.workshop-booking__stepper-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 1.2rem 2.4rem rgba(0, 0, 0, 0.08);
+}
+
+.workshop-booking__stepper-btn:focus-visible {
+  outline: 0.2rem solid rgba(var(--color-foreground), 0.4);
+  outline-offset: 0.2rem;
+}
+
+.workshop-booking__error {
+  margin: 0;
+  font-size: 1.2rem;
+  color: rgba(220, 53, 69, 0.9);
+}
+
+.workshop-dynamic-checkout[data-disabled='true'] {
+  opacity: 0.55;
+}
+
+.workshop-dynamic-checkout__blocked {
+  min-height: 5.6rem;
+  border-radius: 1.6rem;
+  border: 0.1rem dashed rgba(var(--color-foreground), 0.18);
+  background: rgba(var(--color-foreground), 0.02);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.2rem;
+  font-size: 1.3rem;
+  text-align: center;
+  color: rgba(var(--color-foreground), 0.74);
+}

@@ -125,3 +125,8 @@
     min-height: 5.6rem;
   }
 }
+
+/* Hide default quantity selector for workshops */
+.workshop-hide-quantity {
+  display: none;
+}
