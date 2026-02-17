@@ -1,0 +1,46 @@
+/* Product Image Size Controls - Applied from Shopify Admin Settings */
+
+/* Desktop Image Width Control */
+.product--large:not(.product--no-media) .product__media-wrapper {
+  max-width: {{ section.settings.image_width_desktop | default: 54 }}% !important;
+  width: calc({{ section.settings.image_width_desktop | default: 54 }}% - var(--grid-desktop-horizontal-spacing) / 2) !important;
+}
+
+.product--large:not(.product--no-media) .product__info-wrapper {
+  max-width: {{ 100 | minus: section.settings.image_width_desktop | default: 46 }}% !important;
+  width: calc({{ 100 | minus: section.settings.image_width_desktop | default: 46 }}% - var(--grid-desktop-horizontal-spacing) / 2) !important;
+}
+
+/* Max Image Dimensions */
+.product__media-item .media,
+.product__media-item img,
+.product__media-item video {
+  max-width: {{ section.settings.image_max_width | default: 600 }}px !important;
+  max-height: {{ section.settings.image_max_height | default: 800 }}px !important;
+  width: auto !important;
+  height: auto !important;
+}
+
+{% if section.settings.constrain_images %}
+.product__media-item .media {
+  aspect-ratio: auto !important;
+}
+{% endif %}
+
+/* Mobile Responsive */
+@media screen and (max-width: 749px) {
+  .product__media-item .media,
+  .product__media-item img,
+  .product__media-item video {
+    max-width: 100% !important;
+    max-height: {{ section.settings.image_max_height | times: 0.8 | default: 640 }}px !important;
+  }
+}
+
+/* Workshop products specific adjustments */
+.workshop-pdp .product__media-item .media,
+.workshop-pdp .product__media-item img,
+.workshop-pdp .product__media-item video {
+  max-width: {{ section.settings.image_max_width | default: 600 }}px !important;
+  max-height: {{ section.settings.image_max_height | default: 800 }}px !important;
+}
