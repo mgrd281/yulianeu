@@ -29,6 +29,43 @@
   }
 {%- endstyle -%}
 
+{%- style -%}
+  {%- if section.settings.banner_max_width != blank and section.settings.banner_max_width > 0 -%}
+    #Banner-{{ section.id }} {
+      max-width: {{ section.settings.banner_max_width }}px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  {%- endif -%}
+
+  {%- if section.settings.image_height == 'custom' -%}
+    #Banner-{{ section.id }} {
+      min-height: {{ section.settings.banner_height_mobile }}px;
+    }
+
+    #Banner-{{ section.id }} .banner__media {
+      height: {{ section.settings.banner_height_mobile }}px;
+    }
+
+    @media screen and (min-width: 750px) {
+      #Banner-{{ section.id }} {
+        min-height: {{ section.settings.banner_height_desktop }}px;
+      }
+
+      #Banner-{{ section.id }} .banner__media {
+        height: {{ section.settings.banner_height_desktop }}px;
+      }
+    }
+
+    #Banner-{{ section.id }} .banner__media img,
+    #Banner-{{ section.id }} .banner__media video {
+      width: 100%;
+      height: 100%;
+      object-fit: {{ section.settings.banner_object_fit }};
+    }
+  {%- endif -%}
+{%- endstyle -%}
+
 {%- liquid
   assign full_width = '100vw'
   assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
@@ -214,10 +251,64 @@
         {
           "value": "large",
           "label": "t:sections.image-banner.settings.image_height.options__4.label"
+        },
+        {
+          "value": "custom",
+          "label": "Custom (Manuell)"
         }
       ],
       "default": "medium",
       "label": "t:sections.image-banner.settings.image_height.label"
+    },
+    {
+      "type": "header",
+      "content": "Bild-Größe (Breite / Höhe)"
+    },
+    {
+      "type": "range",
+      "id": "banner_max_width",
+      "min": 600,
+      "max": 2200,
+      "step": 20,
+      "unit": "px",
+      "label": "Max. Breite (Desktop)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "banner_height_desktop",
+      "min": 300,
+      "max": 1000,
+      "step": 10,
+      "unit": "px",
+      "label": "Höhe (Desktop) – nur bei Höhe = Custom",
+      "default": 520
+    },
+    {
+      "type": "range",
+      "id": "banner_height_mobile",
+      "min": 220,
+      "max": 800,
+      "step": 10,
+      "unit": "px",
+      "label": "Höhe (Mobile) – nur bei Höhe = Custom",
+      "default": 360
+    },
+    {
+      "type": "select",
+      "id": "banner_object_fit",
+      "label": "Bild-Anpassung (Cover / Contain)",
+      "default": "cover",
+      "options": [
+        {
+          "value": "cover",
+          "label": "Cover (füllt, schneidet ggf. ab)"
+        },
+        {
+          "value": "contain",
+          "label": "Contain (passt komplett, ggf. Rand)"
+        }
+      ]
     },
     {
       "type": "select",
