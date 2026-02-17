@@ -1,0 +1,72 @@
+{{ 'section-main-page.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="section section-{{ section.id }}-padding">
+  <div class="page-width page-width--narrow">
+    <div class="rte">
+      <p><strong>bytinytales</strong><br>
+        Yulia Veksler<br>
+        Burgstraße 21<br>
+        14467 Potsdam<br>
+        Deutschland
+      </p>
+
+      <p>
+        E-Mail: <a href="mailto:bytinytales@web.de">bytinytales@web.de</a><br>
+        Telefon: <a href="tel:+491707310173">+49 170 7310173</a>
+      </p>
+
+      <p><strong>Hinweis:</strong><br>
+        Der Online-Shop „by_tiny_tales“ wird im Rahmen eines Studienprojekts bei DCI erstellt.<br>
+        Zum Zeitpunkt der Erstellung handelt es sich nicht um ein aktives Gewerbe.<br>
+        Die Inhalte dienen der Darstellung eines realitätsnahen Geschäftsmodells.
+      </p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Impressum",
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "Impressum"
+    }
+  ]
+}
+{% endschema %}

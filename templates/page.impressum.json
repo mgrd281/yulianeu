@@ -6,9 +6,17 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "impressum": {
+      "type": "impressum",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "impressum"
   ]
 }
