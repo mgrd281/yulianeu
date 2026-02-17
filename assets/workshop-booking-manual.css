@@ -1,18 +1,20 @@
-/* Workshop Booking UI: Ultra-Modern Big-Brand Service Design */
+/* Workshop Booking UI: Luxury Professional Design */
 .workshop-booking {
   --workshop-primary: #000;
-  --workshop-surface: #fafafa;
-  --workshop-surface-hover: #f5f5f5;
-  --workshop-border: #e5e5e5;
+  --workshop-accent: #1a1a1a;
+  --workshop-surface: #ffffff;
+  --workshop-surface-hover: #f8f8f8;
+  --workshop-border: #e0e0e0;
   --workshop-border-strong: #d0d0d0;
   --workshop-text: #000;
   --workshop-text-light: #666;
   --workshop-error: #dc2626;
   --workshop-error-bg: #fef2f2;
-  --workshop-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  --workshop-shadow-hover: 0 4px 20px rgba(0, 0, 0, 0.08);
-  --workshop-radius: 12px;
-  --workshop-radius-sm: 8px;
+  --workshop-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --workshop-shadow-hover: 0 8px 40px rgba(0, 0, 0, 0.12);
+  --workshop-shadow-strong: 0 12px 48px rgba(0, 0, 0, 0.15);
+  --workshop-radius: 16px;
+  --workshop-radius-sm: 12px;
 }
 
 .workshop-booking {
@@ -20,49 +22,70 @@
 }
 
 .workshop-pdp .workshop-booking {
-  padding: 2.2rem;
-  border-radius: 20px;
-  background: linear-gradient(135deg, #fafafa 0%, #f8f8f8 100%);
-  border: 1px solid #e8e8e8;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.03);
+  padding: 3.2rem;
+  border-radius: 24px;
+  background: linear-gradient(145deg, #ffffff 0%, #fafafa 100%);
+  border: 2px solid #e8e8e8;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+.workshop-pdp .workshop-booking::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #000 0%, #333 100%);
 }
 
 .workshop-booking__header {
-  margin-bottom: 2rem;
-  padding-bottom: 1.6rem;
-  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 2.8rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid #f0f0f0;
+  position: relative;
+  z-index: 1;
 }
 
 .workshop-booking__eyebrow {
   margin: 0;
-  font-size: 1.1rem;
-  letter-spacing: 0.14rem;
+  font-size: 1.2rem;
+  letter-spacing: 0.16rem;
   text-transform: uppercase;
   color: #888;
-  font-weight: 500;
-  margin-bottom: 0.4rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
 }
 
 .workshop-booking__title {
   margin: 0;
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 2.4rem;
+  font-weight: 800;
   line-height: 1.1;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   color: #000;
+  background: linear-gradient(135deg, #000 0%, #333 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .workshop-booking__intro {
-  margin: 0.8rem 0 0;
-  font-size: 1.5rem;
+  margin: 1rem 0 0;
+  font-size: 1.6rem;
   color: #555;
-  line-height: 1.5;
+  line-height: 1.6;
+  font-weight: 400;
 }
 
 .workshop-booking__grid {
   display: grid;
-  gap: 1.8rem;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2.4rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  position: relative;
+  z-index: 1;
 }
 
 @media screen and (min-width: 750px) {
@@ -74,7 +97,7 @@
 .workshop-booking__field {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.8rem;
 }
 
 .workshop-booking__field--full {
@@ -82,54 +105,54 @@
 }
 
 .workshop-booking__label {
-  font-size: 1.3rem;
-  font-weight: 600;
+  font-size: 1.4rem;
+  font-weight: 700;
   color: #000;
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.6rem;
 }
 
 .workshop-booking__required {
   color: #dc2626;
-  font-size: 1.1rem;
-  margin-left: 0.2rem;
+  font-size: 1.2rem;
+  margin-left: 0.3rem;
+  font-weight: 600;
 }
 
 .workshop-booking__icon {
   display: inline-flex;
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 2.6rem;
+  height: 2.6rem;
   align-items: center;
   justify-content: center;
   color: #666;
+  background: #f8f8f8;
+  border-radius: 8px;
 }
 
 .workshop-booking__input,
 .workshop-booking__select,
 .workshop-booking__textarea {
-  padding: 1.2rem 1.6rem;
-  font-size: 1.5rem;
-  border-radius: 12px;
-  border: 1.5px solid #e5e5e5;
-  background: #fff;
+  padding: 1.6rem 2rem;
+  font-size: 1.6rem;
+  border-radius: 16px;
+  border: 2px solid #e0e0e0;
+  background: #ffffff;
   color: #000;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   font-family: inherit;
   line-height: 1.4;
-}
-
-.workshop-booking__textarea {
-  min-height: 9.6rem;
-  resize: vertical;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .workshop-booking__input:focus-visible,
 .workshop-booking__textarea:focus-visible {
-  outline: 2px solid #000;
-  outline-offset: 1px;
+  outline: 3px solid #000;
+  outline-offset: 2px;
   border-color: #000;
-  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 0 6px rgba(0, 0, 0, 0.08), 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 .workshop-booking__input:focus,
@@ -137,13 +160,20 @@
 .workshop-booking__textarea:focus {
   outline: none;
   border-color: #000;
-  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+.workshop-booking__textarea {
+  min-height: 12rem;
+  resize: vertical;
 }
 
 .workshop-booking__input[aria-invalid='true'],
 .workshop-booking__textarea[aria-invalid='true'] {
   border-color: #dc2626;
   background: #fef2f2;
+  box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.1);
 }
 
 .workshop-booking__input--center {
@@ -153,11 +183,18 @@
 .workshop-booking__stepper {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
-  border: 1.5px solid #e5e5e5;
-  border-radius: 12px;
-  background: #fff;
-  padding: 0.4rem;
+  gap: 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 16px;
+  background: #ffffff;
+  padding: 0.6rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.workshop-booking__stepper:hover {
+  border-color: #000;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
 .workshop-booking__stepper-input {
@@ -165,67 +202,94 @@
   text-align: center;
   border: none;
   background: none;
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 1.8rem;
+  font-weight: 700;
   color: #000;
-  padding: 0.8rem 0;
+  padding: 1rem 0;
 }
 
 .workshop-booking__stepper-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 4.4rem;
-  height: 4.4rem;
+  width: 5.2rem;
+  height: 5.2rem;
   border: none;
-  background: #f8f8f8;
-  border-radius: 10px;
+  background: linear-gradient(145deg, #f8f8f8 0%, #e8e8e8 100%);
+  border-radius: 12px;
   color: #000;
   cursor: pointer;
-  transition: all 0.15s ease;
-  font-size: 1.8rem;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 2rem;
   line-height: 1;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .workshop-booking__stepper-btn:hover {
-  background: #000;
+  background: linear-gradient(145deg, #000 0%, #1a1a1a 100%);
   color: #fff;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
 .workshop-booking__stepper-btn:focus-visible {
-  outline: 2px solid #000;
+  outline: 3px solid #000;
   outline-offset: 2px;
 }
 
 .workshop-booking__stepper-btn:active {
-  transform: translateY(0);
+  transform: translateY(0) scale(0.98);
 }
 
 .workshop-booking__error {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   color: #dc2626;
-  margin-top: 0.4rem;
+  margin-top: 0.6rem;
   line-height: 1.4;
+  font-weight: 500;
+  background: #fef2f2;
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  border-left: 3px solid #dc2626;
 }
 
 .workshop-dynamic-checkout[data-disabled='true'] {
-  opacity: 0.4;
+  opacity: 0.3;
+  pointer-events: none;
 }
 
 .workshop-dynamic-checkout__blocked {
-  min-height: 6.4rem;
-  border-radius: 16px;
-  border: 2px dashed #ccc;
-  background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+  min-height: 7.2rem;
+  border-radius: 18px;
+  border: 3px dashed #d0d0d0;
+  background: linear-gradient(145deg, #fafafa 0%, #f5f5f5 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   color: #666;
-  font-size: 1.4rem;
-  font-weight: 500;
+  font-size: 1.5rem;
+  font-weight: 600;
   text-align: center;
-  padding: 1.6rem;
+  padding: 2rem;
   line-height: 1.5;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.04);
+  position: relative;
+  overflow: hidden;
+}
+
+.workshop-dynamic-checkout__blocked::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.05), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
 }

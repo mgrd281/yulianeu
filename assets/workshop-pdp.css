@@ -1,10 +1,11 @@
-/* Workshop PDP: Ultra-Modern Service Layout */
+/* Workshop PDP: Luxury Professional Layout */
 
 .workshop-pdp {
-  --workshop-surface: #fafafa;
-  --workshop-border: #e5e5e5;
-  --workshop-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
-  --workshop-shadow-hover: 0 8px 40px rgba(0, 0, 0, 0.08);
+  --workshop-surface: #ffffff;
+  --workshop-border: #e0e0e0;
+  --workshop-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+  --workshop-shadow-hover: 0 16px 64px rgba(0, 0, 0, 0.1);
+  --workshop-shadow-strong: 0 24px 80px rgba(0, 0, 0, 0.12);
 }
 
 .workshop-pdp .product {
@@ -13,130 +14,172 @@
 
 @media screen and (min-width: 990px) {
   .workshop-pdp .product--large:not(.product--no-media) .product__media-wrapper {
-    max-width: 56%;
-    width: calc(56% - var(--grid-desktop-horizontal-spacing) / 2);
+    max-width: 54%;
+    width: calc(54% - var(--grid-desktop-horizontal-spacing) / 2);
   }
 
   .workshop-pdp .product--large:not(.product--no-media) .product__info-wrapper {
-    max-width: 44%;
-    width: calc(44% - var(--grid-desktop-horizontal-spacing) / 2);
+    max-width: 46%;
+    width: calc(46% - var(--grid-desktop-horizontal-spacing) / 2);
   }
 }
 
 .workshop-pdp .product__info-wrapper {
-  padding-top: 2.4rem;
+  padding-top: 3.2rem;
 }
 
 .workshop-pdp .product__info-container {
-  padding: 1.2rem 0;
+  padding: 1.6rem 0;
 }
 
 .workshop-pdp .product__title h1,
 .workshop-pdp .product__title .h1 {
-  letter-spacing: -0.04em;
-  line-height: 1.0;
-  font-weight: 700;
-  font-size: clamp(2.4rem, 4vw, 3.2rem);
+  letter-spacing: -0.05em;
+  line-height: 0.95;
+  font-weight: 800;
+  font-size: clamp(2.8rem, 5vw, 3.6rem);
+  background: linear-gradient(135deg, #000 0%, #333 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .workshop-pdp .product__title {
-  margin-bottom: 1.8rem;
+  margin-bottom: 2.4rem;
 }
 
 .workshop-pdp .price {
-  margin-bottom: 2rem;
+  margin-bottom: 2.8rem;
 }
 
 .workshop-pdp .price__regular .price-item--last {
-  font-weight: 600;
-  font-size: 1.8rem;
+  font-weight: 700;
+  font-size: 2rem;
+  color: #000;
 }
 
 .workshop-pdp .product__text {
   color: #555;
-  font-size: 1.5rem;
-  line-height: 1.6;
+  font-size: 1.6rem;
+  line-height: 1.7;
+  font-weight: 400;
 }
 
 .workshop-pdp .product__description {
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   color: #444;
-  line-height: 1.7;
-  margin-top: 1.6rem;
+  line-height: 1.8;
+  margin-top: 2rem;
+  font-weight: 400;
 }
 
 /* Booking + CTA grouping */
 .workshop-pdp .product-form {
-  margin-top: 2rem;
+  margin-top: 2.8rem;
 }
 
 .workshop-pdp .workshop-booking {
-  margin-top: 2.4rem;
-  margin-bottom: 2.4rem;
+  margin-top: 3.2rem;
+  margin-bottom: 3.2rem;
 }
 
 .workshop-pdp .workshop-booking__header {
-  padding-bottom: 1.8rem;
-  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 2.2rem;
+  border-bottom: 2px solid #f0f0f0;
 }
 
 .workshop-pdp .product-form__buttons {
   max-width: 100%;
 }
 
-/* Ultra-modern CTA buttons */
+/* Luxury CTA buttons */
 .workshop-pdp .product-form__submit.button {
-  border-radius: 16px;
-  min-height: 6.4rem;
-  font-size: 1.6rem;
-  font-weight: 600;
-  letter-spacing: 0.08rem;
-  transition: all 0.2s ease;
+  border-radius: 18px;
+  min-height: 7.2rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   text-transform: uppercase;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  background: linear-gradient(145deg, #000 0%, #1a1a1a 100%);
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.workshop-pdp .product-form__submit.button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.workshop-pdp .product-form__submit.button:hover::before {
+  left: 100%;
 }
 
 .workshop-pdp .product-form__submit.button:not([disabled]):hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(145deg, #1a1a1a 0%, #333 100%);
 }
 
 .workshop-pdp .shopify-payment-button__button {
-  border-radius: 16px;
-  min-height: 6.4rem;
+  border-radius: 18px;
+  min-height: 7.2rem;
   font-weight: 600;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  font-size: 1.6rem;
 }
 
 .workshop-pdp .shopify-payment-button__button:not([disabled]):hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
 }
 
 .workshop-pdp .product-form__buttons {
-  padding: 2rem;
-  border-radius: 20px;
-  background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
-  border: 1px solid #e8e8e8;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.03);
+  padding: 2.8rem;
+  border-radius: 24px;
+  background: linear-gradient(145deg, #ffffff 0%, #fafafa 100%);
+  border: 2px solid #e8e8e8;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+.workshop-pdp .product-form__buttons::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #000 0%, #333 100%);
 }
 
 .workshop-pdp .workshop-dynamic-checkout {
-  margin-top: 1.6rem;
+  margin-top: 2rem;
 }
 
 /* Subtle divider before accordion blocks */
 .workshop-pdp .product__accordion {
   border-top-color: #f0f0f0;
-  margin-top: 3.2rem;
-  padding-top: 2rem;
+  border-top-width: 2px;
+  margin-top: 4rem;
+  padding-top: 2.4rem;
 }
 
 .workshop-pdp .product__accordion .accordion__title {
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 1.6rem;
+  font-weight: 700;
   color: #000;
+  letter-spacing: -0.02em;
 }
 
 @media screen and (max-width: 749px) {
@@ -147,12 +190,17 @@
 
   .workshop-pdp .product-form__submit.button,
   .workshop-pdp .shopify-payment-button__button {
-    min-height: 6.4rem;
-    font-size: 1.5rem;
+    min-height: 6.8rem;
+    font-size: 1.6rem;
   }
 
   .workshop-pdp .product-form__buttons {
-    padding: 1.6rem;
+    padding: 2rem;
+  }
+
+  .workshop-pdp .product__title h1,
+  .workshop-pdp .product__title .h1 {
+    font-size: clamp(2.4rem, 6vw, 3rem);
   }
 }
 
