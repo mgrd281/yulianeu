@@ -1,0 +1,89 @@
+/* Workshop PDP: modern service-style layout overrides (scoped) */
+
+.workshop-pdp .product {
+  gap: 0;
+}
+
+@media screen and (min-width: 990px) {
+  .workshop-pdp .product--large:not(.product--no-media) .product__media-wrapper {
+    max-width: 58%;
+    width: calc(58% - var(--grid-desktop-horizontal-spacing) / 2);
+  }
+
+  .workshop-pdp .product--large:not(.product--no-media) .product__info-wrapper {
+    max-width: 42%;
+    width: calc(42% - var(--grid-desktop-horizontal-spacing) / 2);
+  }
+}
+
+.workshop-pdp .product__info-wrapper {
+  padding-top: 1rem;
+}
+
+.workshop-pdp .product__info-container {
+  padding: 0.6rem 0;
+}
+
+.workshop-pdp .product__title h1,
+.workshop-pdp .product__title .h1 {
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+.workshop-pdp .product__text {
+  color: rgba(var(--color-foreground), 0.7);
+}
+
+.workshop-pdp .product__description {
+  font-size: 1.5rem;
+  color: rgba(var(--color-foreground), 0.78);
+}
+
+/* Booking + CTA grouping */
+.workshop-pdp .product-form {
+  margin-top: 1.2rem;
+}
+
+.workshop-pdp .workshop-booking {
+  margin-top: 1.8rem;
+  margin-bottom: 1.8rem;
+}
+
+.workshop-pdp .workshop-booking__header {
+  padding-bottom: 1rem;
+  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.08);
+}
+
+.workshop-pdp .product-form__buttons {
+  max-width: 100%;
+}
+
+/* Make primary CTA feel premium */
+.workshop-pdp .product-form__submit.button {
+  border-radius: 1.6rem;
+  min-height: 5.6rem;
+  font-size: 1.5rem;
+  letter-spacing: 0.08rem;
+}
+
+.workshop-pdp .shopify-payment-button__button {
+  border-radius: 1.6rem;
+  min-height: 5.6rem;
+}
+
+/* Subtle divider before accordion blocks */
+.workshop-pdp .product__accordion {
+  border-top-color: rgba(var(--color-foreground), 0.08);
+}
+
+@media screen and (max-width: 749px) {
+  .workshop-pdp .product__info-wrapper {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .workshop-pdp .product-form__submit.button,
+  .workshop-pdp .shopify-payment-button__button {
+    min-height: 5.6rem;
+  }
+}
