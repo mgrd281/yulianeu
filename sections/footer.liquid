@@ -1,6 +1,7 @@
 {% comment %}theme-check-disable UndefinedObject{% endcomment %}
 {{ 'section-footer.css' | asset_url | stylesheet_tag }}
 {{ 'component-newsletter.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'footer-premium.js' | asset_url }}" defer="defer"></script>
 
 {%- style -%}
   .footer {
@@ -27,64 +28,66 @@
 <footer class="footer footer--premium color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
   {%- liquid
     assign has_social_icons = false
-    if settings.social_facebook_link != blank or settings.social_instagram_link != blank or settings.social_tiktok_link != blank
+    if settings.social_instagram_link != blank
       assign has_social_icons = true
     endif
   -%}
 
   {% comment %} Newsletter + Social Row {% endcomment %}
   <div class="footer__top page-width">
-    <div class="footer__newsletter-wrapper">
-      <div class="footer__newsletter-content">
-        <h3 class="footer__newsletter-title">Newsletter</h3>
-        <p class="footer__newsletter-subtitle">Exklusive Deals & Neuheiten – jederzeit abmeldbar</p>
-      </div>
-      {%- form 'customer', id: 'FooterNewsletter', class: 'footer__newsletter-form' -%}
-        <input type="hidden" name="contact[tags]" value="newsletter">
-        <div class="newsletter-form__field-wrapper">
-          <div class="field newsletter-field">
-            <input
-              id="NewsletterForm--{{ section.id }}"
-              type="email"
-              name="contact[email]"
-              class="field__input newsletter-input"
-              value="{{ form.email }}"
-              aria-required="true"
-              autocorrect="off"
-              autocapitalize="off"
-              autocomplete="email"
-              {% if form.errors %}
-                autofocus
-                aria-invalid="true"
-                aria-describedby="Newsletter-error"
-              {% elsif form.posted_successfully? %}
-                aria-describedby="Newsletter-success"
-              {% endif %}
-              placeholder="E-Mail"
-              required
-            >
-            <label class="field__label newsletter-label" for="NewsletterForm--{{ section.id }}">E-Mail</label>
-            <button type="submit" class="newsletter-button" name="commit" aria-label="Anmelden">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4.167 10h11.666m0 0L10 4.167M15.833 10L10 15.833" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
-          </div>
-          {%- if form.errors -%}
-            <small class="newsletter-form__message form__message" id="Newsletter-error">
-              {{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}
-            </small>
-          {%- endif -%}
+    {%- if section.settings.newsletter_enable -%}
+      <div class="footer__newsletter-wrapper">
+        <div class="footer__newsletter-content">
+          <h3 class="footer__newsletter-title">Newsletter</h3>
+          <p class="footer__newsletter-subtitle">Tipps, Inspiration &amp; Projekt-Updates – kein Spam</p>
         </div>
-        {%- if form.posted_successfully? -%}
-          <h3 class="newsletter-form__message--success" id="Newsletter-success" tabindex="-1">
-            Vielen Dank für Ihre Anmeldung!
-          </h3>
-        {%- endif -%}
-      {%- endform -%}
-    </div>
+        {%- form 'customer', id: 'FooterNewsletter', class: 'footer__newsletter-form' -%}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <div class="newsletter-form__field-wrapper">
+            <div class="field newsletter-field">
+              <input
+                id="NewsletterForm--{{ section.id }}"
+                type="email"
+                name="contact[email]"
+                class="field__input newsletter-input"
+                value="{{ form.email }}"
+                aria-required="true"
+                autocorrect="off"
+                autocapitalize="off"
+                autocomplete="email"
+                {% if form.errors %}
+                  autofocus
+                  aria-invalid="true"
+                  aria-describedby="Newsletter-error"
+                {% elsif form.posted_successfully? %}
+                  aria-describedby="Newsletter-success"
+                {% endif %}
+                placeholder="E-Mail"
+                required
+              >
+              <label class="field__label newsletter-label" for="NewsletterForm--{{ section.id }}">E-Mail</label>
+              <button type="submit" class="newsletter-button" name="commit" aria-label="Anmelden">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.167 10h11.666m0 0L10 4.167M15.833 10L10 15.833" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+            {%- if form.errors -%}
+              <small class="newsletter-form__message form__message" id="Newsletter-error">
+                {{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}
+              </small>
+            {%- endif -%}
+          </div>
+          {%- if form.posted_successfully? -%}
+            <h3 class="newsletter-form__message--success" id="Newsletter-success" tabindex="-1">
+              Vielen Dank für Ihre Anmeldung!
+            </h3>
+          {%- endif -%}
+        {%- endform -%}
+      </div>
+    {%- endif -%}
 
-    {%- if has_social_icons -%}
+    {%- if section.settings.show_social and has_social_icons -%}
       <div class="footer__social-wrapper">
         <div class="footer__social">
           {%- if settings.social_instagram_link != blank -%}
@@ -96,20 +99,6 @@
               </svg>
             </a>
           {%- endif -%}
-          {%- if settings.social_tiktok_link != blank -%}
-            <a href="{{ settings.social_tiktok_link }}" class="social-link" aria-label="TikTok" target="_blank" rel="noopener">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9 12a4 4 0 1 0 4 4V4a6 6 0 0 0 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </a>
-          {%- endif -%}
-          {%- if settings.social_facebook_link != blank -%}
-            <a href="{{ settings.social_facebook_link }}" class="social-link" aria-label="Facebook" target="_blank" rel="noopener">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </a>
-          {%- endif -%}
         </div>
       </div>
     {%- endif -%}
@@ -117,50 +106,45 @@
 
   {% comment %} Main Columns Grid {% endcomment %}
   <div class="footer__columns page-width">
-    {% comment %} Column 1: Shop {% endcomment %}
+    {% comment %} Column 1: Projekt {% endcomment %}
     <div class="footer-column" data-accordion="footer">
-      <button class="footer-column__title" aria-expanded="false" aria-controls="footer-shop">
-        Shop
+      <button class="footer-column__title" type="button" aria-expanded="false" aria-controls="footer-projekt">
+        Projekt
         <svg class="accordion-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
           <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
-      <ul id="footer-shop" class="footer-column__list">
-        <li><a href="/collections/bestseller">Bestseller</a></li>
-        <li><a href="/collections/herrenuhren">Herrenuhren</a></li>
-        <li><a href="/collections/lego">LEGO®</a></li>
-        <li><a href="/collections/games">Games</a></li>
-        <li><a href="/collections/sale">Sale</a></li>
+      <ul id="footer-projekt" class="footer-column__list" role="list">
+        <li><a href="/pages/ueber-das-projekt">Über das Projekt</a></li>
+        <li><a href="/pages/faq">FAQ</a></li>
+        <li><a href="/pages/kontakt">Kontakt</a></li>
       </ul>
     </div>
 
     {% comment %} Column 2: Service {% endcomment %}
     <div class="footer-column" data-accordion="footer">
-      <button class="footer-column__title" aria-expanded="false" aria-controls="footer-service">
+      <button class="footer-column__title" type="button" aria-expanded="false" aria-controls="footer-service">
         Service
         <svg class="accordion-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
           <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
-      <ul id="footer-service" class="footer-column__list">
-        <li><a href="/pages/versand-lieferung">Versand & Lieferung</a></li>
-        <li><a href="/pages/retouren-umtausch">Retouren & Umtausch</a></li>
-        <li><a href="/pages/zahlungsarten">Zahlungsarten</a></li>
-        <li><a href="/pages/kontakt">Kontakt</a></li>
-        <li><a href="/pages/faq">FAQ</a></li>
-        <li><a href="/pages/ueber-uns">Über uns</a></li>
+      <ul id="footer-service" class="footer-column__list" role="list">
+        <li><a href="/pages/leistungen">Leistungen</a></li>
+        <li><a href="/pages/ablauf">Ablauf</a></li>
+        <li><a href="/pages/support">Support</a></li>
       </ul>
     </div>
 
     {% comment %} Column 3: Rechtliches {% endcomment %}
     <div class="footer-column" data-accordion="footer">
-      <button class="footer-column__title" aria-expanded="false" aria-controls="footer-legal">
+      <button class="footer-column__title" type="button" aria-expanded="false" aria-controls="footer-legal">
         Rechtliches
         <svg class="accordion-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
           <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
-      <ul id="footer-legal" class="footer-column__list">
+      <ul id="footer-legal" class="footer-column__list" role="list">
         <li><a href="/pages/impressum">Impressum</a></li>
         <li><a href="/pages/datenschutz">Datenschutz</a></li>
         <li><a href="/pages/agb">AGB</a></li>
@@ -169,39 +153,19 @@
       </ul>
     </div>
 
-    {% comment %} Column 4: Vertrauen {% endcomment %}
-    <div class="footer-column footer-column--trust">
-      <h3 class="footer-column__title desktop-only">Vertrauen</h3>
-      <ul class="footer-trust-list">
-        <li>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" class="trust-icon">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <span>Sicher bezahlen</span>
-        </li>
-        <li>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" class="trust-icon">
-            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M12 6v6l4 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-          <span>Versand aus Deutschland</span>
-        </li>
-        <li>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" class="trust-icon">
-            <path d="M3 7v14a2 2 0 002 2h14a2 2 0 002-2V7" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M3 7l9-4 9 4" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M12 22V12" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M8 12l4-2 4 2" stroke="currentColor" stroke-width="1.5"/>
-          </svg>
-          <span>14 Tage Rückgabe</span>
-        </li>
-        <li>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" class="trust-icon">
-            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7A8.38 8.38 0 0 1 4 11.5a8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" stroke="currentColor" stroke-width="1.5"/>
-          </svg>
-          <span>Support (Mo–Fr)</span>
-        </li>
+    {% comment %} Column 4: Transparenz {% endcomment %}
+    <div class="footer-column" data-accordion="footer">
+      <button class="footer-column__title" type="button" aria-expanded="false" aria-controls="footer-transparenz">
+        Transparenz
+        <svg class="accordion-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <ul id="footer-transparenz" class="footer-column__list" role="list">
+        <li><a href="/pages/studienprojekt-hinweis">Studienprojekt Hinweis</a></li>
+        <li><a href="/pages/keine-kommerzielle-nutzung">Keine kommerzielle Nutzung</a></li>
+        <li><a href="https://digitalcareerinstitute.org" target="_blank" rel="noopener">Lernplattform (DCI)</a></li>
+        <li><a href="/pages/kontaktperson">Kontaktperson</a></li>
       </ul>
     </div>
   </div>
@@ -210,48 +174,11 @@
   <div class="footer__bottom page-width">
     <div class="footer__bottom-content">
       <div class="footer__copyright">
-        <p>&copy; {{ 'now' | date: '%Y' }} bytinytales. Alle Rechte vorbehalten.</p>
+        <p>&copy; {{ 'now' | date: '%Y' }} bytinytales</p>
       </div>
 
-      <div class="footer__payments">
-        <span class="footer__payments-label">Zahlungsmethoden & Käuferschutz</span>
-        <div class="footer__payments-grid">
-          {% comment %} PayPal {% endcomment %}
-          <div class="payment-badge" aria-label="PayPal">
-            <svg width="80" height="28" viewBox="0 0 80 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <text x="4" y="20" font-size="16" fill="#003087" font-family="Arial" font-weight="bold">Pay</text>
-              <text x="36" y="20" font-size="16" fill="#0070E0" font-family="Arial" font-weight="bold">Pal</text>
-            </svg>
-          </div>
-          {% comment %} Klarna {% endcomment %}
-          <div class="payment-badge" aria-label="Klarna">
-            <svg width="80" height="28" viewBox="0 0 80 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <text x="8" y="20" font-size="14" fill="#0A0B09" font-family="Arial" font-weight="bold">Klarna</text>
-            </svg>
-          </div>
-          {% comment %} Visa {% endcomment %}
-          <div class="payment-badge" aria-label="Visa">
-            <svg width="70" height="28" viewBox="0 0 70 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <text x="10" y="22" font-size="20" fill="#1A1F71" font-family="Arial" font-weight="bold" font-style="italic">VISA</text>
-            </svg>
-          </div>
-          {% comment %} Mastercard {% endcomment %}
-          <div class="payment-badge" aria-label="Mastercard">
-            <svg width="50" height="28" viewBox="0 0 50 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="16" cy="14" r="11" fill="#EB001B"/>
-              <circle cx="34" cy="14" r="11" fill="#F79E1B"/>
-              <path d="M25 5c6 0 11 4 11 9s-5 9-11 9-11-4-11-9 5-9 11-9z" fill="#FF5F00"/>
-            </svg>
-          </div>
-          {% comment %} Apple Pay {% endcomment %}
-          <div class="payment-badge" aria-label="Apple Pay">
-            <svg width="70" height="28" viewBox="0 0 70 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M14.5 7c.8-1 2.2-1.7 3.3-1.7.2 0 .3 0 .5.1-.2 1.2-1.1 2.2-2.2 2.4 0 0-.1 0-.1.1-.1 0-.2.1-.3.1-.8.2-1.6-.1-2-.5.6-.3 1.1-1 1.3-1.4h-.5z" fill="#000"/>
-              <text x="22" y="13" font-size="11" fill="#000" font-family="Arial" font-weight="600">Apple</text>
-              <text x="22" y="23" font-size="13" fill="#000" font-family="Arial" font-weight="bold">Pay</text>
-            </svg>
-          </div>
-        </div>
+      <div class="footer__legal-note">
+        <p>Dieses Projekt dient ausschließlich Lern- und Demonstrationszwecken.</p>
       </div>
     </div>
   </div>
