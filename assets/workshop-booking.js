@@ -163,7 +163,13 @@ class WorkshopBooking {
     }
 
     if (this.dynamicCheckoutWrapper) {
+      const blockedMessage = this.dynamicCheckoutWrapper.querySelector('[data-dynamic-checkout-blocked]');
+      const paymentButton = this.dynamicCheckoutWrapper.querySelector('.shopify-payment-button');
+
       this.dynamicCheckoutWrapper.toggleAttribute('data-disabled', !valid);
+
+      if (paymentButton) paymentButton.hidden = !valid;
+      if (blockedMessage) blockedMessage.hidden = valid;
 
       this.dynamicCheckoutWrapper
         .querySelectorAll('button, [role="button"], input[type="submit"], a')

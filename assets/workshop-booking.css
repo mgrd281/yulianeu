@@ -142,3 +142,17 @@
 .workshop-dynamic-checkout[data-disabled='true'] {
   opacity: 0.55;
 }
+
+.workshop-dynamic-checkout__blocked {
+  min-height: 5.6rem;
+  border-radius: 1.6rem;
+  border: 0.1rem dashed rgba(var(--color-foreground), 0.18);
+  background: rgba(var(--color-foreground), 0.02);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.2rem;
+  font-size: 1.3rem;
+  text-align: center;
+  color: rgba(var(--color-foreground), 0.74);
+}

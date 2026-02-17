@@ -197,6 +197,9 @@
           </button>
           {%- if show_dynamic_checkout -%}
             <div class="workshop-dynamic-checkout" data-dynamic-checkout>
+              <div class="workshop-dynamic-checkout__blocked" data-dynamic-checkout-blocked hidden>
+                Bitte Datum, Uhrzeit und Personen auswählen, um fortzufahren.
+              </div>
               {{ form | payment_button }}
             </div>
           {%- endif -%}
