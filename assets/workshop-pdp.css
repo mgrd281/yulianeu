@@ -1,7 +1,12 @@
-/* Workshop PDP: modern service-style layout overrides (scoped) */
-
 .workshop-pdp .product {
   gap: 0;
+}
+
+.workshop-pdp {
+  --workshop-surface: rgba(var(--color-foreground), 0.03);
+  --workshop-border: rgba(var(--color-foreground), 0.10);
+  --workshop-border-strong: rgba(var(--color-foreground), 0.14);
+  --workshop-shadow: 0 1.8rem 4.2rem rgba(0, 0, 0, 0.08);
 }
 
 @media screen and (min-width: 990px) {
@@ -17,7 +22,7 @@
 }
 
 .workshop-pdp .product__info-wrapper {
-  padding-top: 1rem;
+  padding-top: 1.2rem;
 }
 
 .workshop-pdp .product__info-container {
@@ -26,8 +31,17 @@
 
 .workshop-pdp .product__title h1,
 .workshop-pdp .product__title .h1 {
-  letter-spacing: -0.02em;
-  line-height: 1.05;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+  font-weight: 600;
+}
+
+.workshop-pdp .product__title {
+  margin-bottom: 1.2rem;
+}
+
+.workshop-pdp .price {
+  margin-bottom: 1.2rem;
 }
 
 .workshop-pdp .product__text {
@@ -50,7 +64,7 @@
 }
 
 .workshop-pdp .workshop-booking__header {
-  padding-bottom: 1rem;
+  padding-bottom: 1.2rem;
   border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.08);
 }
 
@@ -63,12 +77,36 @@
   border-radius: 1.6rem;
   min-height: 5.6rem;
   font-size: 1.5rem;
-  letter-spacing: 0.08rem;
+  letter-spacing: 0.09rem;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.workshop-pdp .product-form__submit.button:not([disabled]):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 1.6rem 3.2rem rgba(0, 0, 0, 0.12);
 }
 
 .workshop-pdp .shopify-payment-button__button {
   border-radius: 1.6rem;
   min-height: 5.6rem;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.workshop-pdp .shopify-payment-button__button:not([disabled]):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 1.6rem 3.2rem rgba(0, 0, 0, 0.10);
+}
+
+.workshop-pdp .product-form__buttons {
+  padding: 1.4rem;
+  border-radius: 1.8rem;
+  background: var(--workshop-surface);
+  border: 0.1rem solid var(--workshop-border);
+  box-shadow: var(--workshop-shadow);
+}
+
+.workshop-pdp .workshop-dynamic-checkout {
+  margin-top: 1rem;
 }
 
 /* Subtle divider before accordion blocks */
