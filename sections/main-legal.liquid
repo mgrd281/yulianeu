@@ -1,0 +1,81 @@
+{{ 'legal-center.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'legal-center.js' | asset_url }}" defer="defer"></script>
+
+{%- liquid
+  assign title = section.settings.title
+  if title == blank
+    assign title = page.title
+  endif
+-%}
+
+<section class="legal-center" data-section-id="{{ section.id }}">
+  <div class="page-width">
+    <header class="legal-center__header">
+      <div class="legal-center__title-wrap">
+        <h1 class="legal-center__title">{{ title | escape }}</h1>
+
+        {%- if section.settings.subtitle != blank -%}
+          <p class="legal-center__subtitle">{{ section.settings.subtitle }}</p>
+        {%- endif -%}
+
+        {%- if section.settings.show_last_updated and page.updated_at != blank -%}
+          <p class="legal-center__meta">Stand: {{ page.updated_at | date: '%B %Y' }}</p>
+        {%- endif -%}
+      </div>
+    </header>
+
+    <div class="legal-center__layout" data-legal-layout>
+      <nav class="legal-center__toc" aria-label="Inhaltsverzeichnis" data-legal-toc>
+        <div class="legal-center__toc-inner">
+          <div class="legal-center__toc-heading">Inhaltsverzeichnis</div>
+
+          <details class="legal-center__toc-mobile" data-legal-toc-mobile>
+            <summary class="legal-center__toc-summary">Inhaltsverzeichnis</summary>
+            <div class="legal-center__toc-list" data-legal-toc-list></div>
+          </details>
+
+          <div class="legal-center__toc-desktop legal-center__toc-list" data-legal-toc-list></div>
+        </div>
+      </nav>
+
+      <article class="legal-center__content" data-legal-content>
+        <div class="legal-center__rte rte" data-legal-rte>
+          {{ page.content }}
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Legal Center",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titel",
+      "default": "AGB"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Untertitel",
+      "default": "Allgemeine Geschäftsbedingungen"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_last_updated",
+      "label": "Stand anzeigen (aus page.updated_at)",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Legal Center"
+    }
+  ]
+}
+{% endschema %}

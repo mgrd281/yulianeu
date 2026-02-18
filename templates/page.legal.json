@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-legal",
+      "settings": {
+        "title": "AGB",
+        "subtitle": "Allgemeine Geschäftsbedingungen",
+        "show_last_updated": true
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
