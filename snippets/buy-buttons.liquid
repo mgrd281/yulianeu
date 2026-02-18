@@ -60,7 +60,7 @@
           {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
         {%- endif -%}
 
-        {%- if product.tags contains 'workshop' -%}
+        {%- if template.suffix == 'workshop' -%}
           <div class="workshop-booking" data-workshop-booking>
             <div class="workshop-booking__header">
               <p class="workshop-booking__eyebrow">Workshop Buchung</p>
