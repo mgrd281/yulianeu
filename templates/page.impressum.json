@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
@@ -22,10 +13,20 @@
         "padding_top": 0,
         "padding_bottom": 36
       }
+    },
+    "legal_leistungen": {
+      "type": "legal-leistungen",
+      "settings": {
+        "heading": "§ Leistungen",
+        "content": "<p><strong>1. Kreativraum und Workshops (Offline-Angebot)</strong></p><p>by tiny tales betreibt in Potsdam einen kreativen Raum für analoge Begegnungen und gemeinsames Gestalten.</p><p>Zum Leistungsangebot gehören insbesondere:</p><ul><li>Kreativ-Workshops für Erwachsene und Familien</li><li>thematische Gestaltungsangebote (z. B. Textil, Schmuck, Handarbeit, Miniaturen)</li><li>offene kreative Treffen und Gemeinschaftsformate</li><li>zeitlich begrenzte Veranstaltungen im Kreativraum</li></ul><p>Workshops und Veranstaltungen finden zu festgelegten Terminen statt und sind in ihrer Teilnehmerzahl begrenzt.</p><p><strong>2. Reservierung und Buchung von Workshop-Plätzen (Online-Shop)</strong></p><p>Über den Online-Shop besteht die Möglichkeit, verbindlich Plätze für Workshops, Veranstaltungen oder Treffen zu reservieren.</p><p>Mit Abschluss des Buchungsvorgangs wird ein Teilnahmeplatz für die jeweilige Veranstaltung reserviert. Die Anzahl der verfügbaren Plätze ist begrenzt.</p><p>Details zu:</p><ul><li>Termin</li><li>Dauer</li><li>Teilnahmebedingungen</li><li>Preisen</li><li>eventuellen Materialkosten</li></ul><p>werden in der jeweiligen Veranstaltungsbeschreibung angegeben.</p><p>Die Buchung eines Workshop-Platzes stellt keinen Erwerb eines physischen Produkts dar, sondern eine Reservierung eines Teilnahmeanspruchs für eine konkrete Veranstaltung.</p><p><strong>3. Verkauf handgefertigter Produkte</strong></p><p>Im Online-Shop werden zudem handgefertigte Produkte angeboten, insbesondere:</p><ul><li>Schmuckstücke (z. B. Armbänder, Ketten)</li><li>gestrickte und textile Produkte</li><li>dekorative Miniaturen und kreative Einzelstücke</li></ul><p>Es handelt sich überwiegend um Einzelstücke oder Kleinserien in Handarbeit.</p><p><strong>4. Projektstatus</strong></p><p>by tiny tales wird im Rahmen eines Abschlussprojekts entwickelt.</p><p>Ein regulärer Geschäftsbetrieb kann zum Zeitpunkt der Veröffentlichung noch nicht aufgenommen sein.</p><p>Verbindliche Leistungen werden erst nach offizieller Aufnahme der Geschäftstätigkeit erbracht.</p>",
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "main",
-    "impressum"
+    "impressum",
+    "legal_leistungen"
   ]
 }

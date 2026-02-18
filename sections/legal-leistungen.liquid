@@ -1,0 +1,74 @@
+{{ 'section-main-page.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="page-width page-width--narrow section-{{ section.id }}-padding">
+  {%- if section.settings.heading != blank -%}
+    <h2 class="h2">{{ section.settings.heading }}</h2>
+  {%- endif -%}
+
+  <div class="rte">{{ section.settings.content }}</div>
+</div>
+
+{% schema %}
+{
+  "name": "Leistungen (Text)",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Überschrift",
+      "default": "§ Leistungen"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Inhalt",
+      "default": "<p><strong>1. Kreativraum und Workshops (Offline-Angebot)</strong></p><p>by tiny tales betreibt in Potsdam einen kreativen Raum für analoge Begegnungen und gemeinsames Gestalten.</p><p>Zum Leistungsangebot gehören insbesondere:</p><ul><li>Kreativ-Workshops für Erwachsene und Familien</li><li>thematische Gestaltungsangebote (z. B. Textil, Schmuck, Handarbeit, Miniaturen)</li><li>offene kreative Treffen und Gemeinschaftsformate</li><li>zeitlich begrenzte Veranstaltungen im Kreativraum</li></ul><p>Workshops und Veranstaltungen finden zu festgelegten Terminen statt und sind in ihrer Teilnehmerzahl begrenzt.</p><p><strong>2. Reservierung und Buchung von Workshop-Plätzen (Online-Shop)</strong></p><p>Über den Online-Shop besteht die Möglichkeit, verbindlich Plätze für Workshops, Veranstaltungen oder Treffen zu reservieren.</p><p>Mit Abschluss des Buchungsvorgangs wird ein Teilnahmeplatz für die jeweilige Veranstaltung reserviert. Die Anzahl der verfügbaren Plätze ist begrenzt.</p><p>Details zu:</p><ul><li>Termin</li><li>Dauer</li><li>Teilnahmebedingungen</li><li>Preisen</li><li>eventuellen Materialkosten</li></ul><p>werden in der jeweiligen Veranstaltungsbeschreibung angegeben.</p><p>Die Buchung eines Workshop-Platzes stellt keinen Erwerb eines physischen Produkts dar, sondern eine Reservierung eines Teilnahmeanspruchs für eine konkrete Veranstaltung.</p><p><strong>3. Verkauf handgefertigter Produkte</strong></p><p>Im Online-Shop werden zudem handgefertigte Produkte angeboten, insbesondere:</p><ul><li>Schmuckstücke (z. B. Armbänder, Ketten)</li><li>gestrickte und textile Produkte</li><li>dekorative Miniaturen und kreative Einzelstücke</li></ul><p>Es handelt sich überwiegend um Einzelstücke oder Kleinserien in Handarbeit.</p><p><strong>4. Projektstatus</strong></p><p>by tiny tales wird im Rahmen eines Abschlussprojekts entwickelt.</p><p>Ein regulärer Geschäftsbetrieb kann zum Zeitpunkt der Veröffentlichung noch nicht aufgenommen sein.</p><p>Verbindliche Leistungen werden erst nach offizieller Aufnahme der Geschäftstätigkeit erbracht.</p>"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "Leistungen (Text)"
+    }
+  ]
+}
+{% endschema %}
